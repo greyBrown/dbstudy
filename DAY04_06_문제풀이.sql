@@ -14,7 +14,7 @@ WHERE D.DEPARTMENT_NAME = 'Executive';            --조건절 테이블 별명 �
 -- 3. 모든 사원들의 EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_NAME, STREET_ADDRESS, CITY를 조회하시오.
 SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME, L.STREET_ADDRESS, L.CITY
 FROM EMPLOYEES E INNER JOIN DEPARTMENTS D
-ON D.DEPARTMENT_ID = E.DEPARTMENT_ID RIGHT JOIN LOCATIONS L              --조인순서 다르게 함. 크게 더 나은가...? 아직은 아리까리
+ON D.DEPARTMENT_ID = E.DEPARTMENT_ID RIGHT JOIN LOCATIONS L              --조인순서 다르게 함. 뭐가 더 나은가...? 아직은 아리까리
 ON D.LOCATION_ID = L.LOCATION_ID;                                        --두번째 INNER 조인이 아니라 RIGHT 조인
 
 
@@ -28,7 +28,7 @@ GROUP BY D.DEPARTMENT_ID, D.DEPARTMENT_NAME;
 SELECT E.EMPLOYEE_ID, E.JOB_ID AS 현재, H.JOB_ID AS 과거
 FROM EMPLOYEES E INNER JOIN JOB_HISTORY H
 ON E.EMPLOYEE_ID=H.EMPLOYEE_ID
-WHERE E.JOB_ID != H.JOB_ID;                                 --WHERE절 안썼음. 바뀌지 않았는데 존재하는 사람들으 제외하기 위해 해당 조건문 추가해줌.
+WHERE E.JOB_ID != H.JOB_ID;                                 --WHERE절 안썼음. 바뀌진 않았는데 존재하는 사람들을 제외하기 위해 해당 조건문 추가해줌.
 
 
 -- 6. 모든 사원들의 EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_NAME을 조회하시오. 부서가 없는 사원의 부서명은 'None'으로 조회되도록 처리하시오.
@@ -60,3 +60,5 @@ SELECT D.DEPARTMENT_ID      AS 부서번호
     ON R.REGION_ID = C.REGION_ID INNER JOIN LOCATIONS L
     ON C.COUNTRY_ID = L.COUNTRY_ID INNER JOIN DEPARTMENTS D
     ON L.LOCATION_ID = D.LOCATION_ID;
+
+--결과가 달랐던거 1~2개! != 같지 않을 시...느낌표가 먼저다 느낌표가!
